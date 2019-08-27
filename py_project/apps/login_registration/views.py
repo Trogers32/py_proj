@@ -14,14 +14,19 @@ def home(request):
     return render(request, "main/lr.html")
 
 def success(request):
-    try:
-        uid = int(request.session['user_id'])
-        context = {
-            "user" : User.objects.get(id=uid),
-        }
-        return redirect("/trips")
-    except:
-        return render(request, "main/FAIL.html")
+# try:
+    uid = int(request.session['user_id'])
+    context = {
+        "user" : User.objects.get(id=uid),
+    }
+    if request.session['current'] == 1:
+        return redirect("/")
+    elif request.session['current'] == 2:
+        return redirect("/reviews")
+    else:
+        return redirect("/contact")
+# except:
+#     return render(request, "main/FAIL.html")
 
 def fail(request):
     return render(request, "main/FAIL.html")
@@ -29,6 +34,8 @@ def fail(request):
 def register(request):
     errors = User.objects.register_validator(request.POST)
         # check if the errors dictionary has anything in it
+    if 'current' not in request.session:
+        request.session['current'] = 1
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -47,6 +54,8 @@ def register(request):
 def login(request):
     errors = User.objects.login_validator(request.POST)
     user = User.objects.filter(email=request.POST['email'])
+    if 'current' not in request.session:
+        request.session['current'] = 1
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -59,8 +68,15 @@ def login(request):
     return redirect('/login')
 
 def logout(request):
-    request.session.clear()
-    return redirect("/login")
+    if request.session['current'] == 1:
+        request.session.clear()
+        return redirect("/")
+    elif request.session['current'] == 2:
+        request.session.clear()
+        return redirect("/reviews")
+    else:
+        request.session.clear()
+        return redirect("/contact")
 
 ###########################################################
 ###########################################################

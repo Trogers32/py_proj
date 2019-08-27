@@ -41,35 +41,6 @@ class User_validation(models.Manager):
             errors['pword'] = "Incorrect email or password."
         return errors
 
-class Trip_validation(models.Manager):
-    def trip_validator(self, postData):
-        errors = {}
-        if len(postData['destination']) < 3:
-            errors["destination"] = "Trip destination must be at least 3 characters."
-        if postData['start_date'] == '':
-            errors["start"] = "Must have a start date."
-        else:
-            # st = datetime.strptime(postData['start_date'], '%b. %d, %Y')
-            # st = datetime.strftime(st, '%Y-%m-%d')
-            # st = datetime.strptime(st, '%Y-%m-%d')
-            st = datetime.strptime(postData['start_date'], '%Y-%m-%d')
-            if st < datetime.today():
-                errors["start"] = "Start date should be in the future."
-        if postData['end_date'] == '':
-            errors["end"] = "Must have an end date."
-        else:
-            # en = datetime.strptime(postData['end_date'], '%b. %d, %Y')
-            # en = datetime.strftime(en, '%Y-%m-%d')
-            # en = datetime.strptime(en, '%Y-%m-%d')
-            en = datetime.strptime(postData['end_date'], '%Y-%m-%d')
-            if en < st:
-                errors["end"] = "End date should be after the start date."
-            if en < datetime.today():
-                errors["fend"] = "End date should be in the future."
-        if len(postData['plan']) < 3:
-            errors["plan"] = "Trip plan must be at least 3 characters."
-        return errors
-
 
 class User(models.Model):
     first_name = models.CharField(max_length=255)
@@ -79,14 +50,3 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = User_validation()
-
-class Trip(models.Model):
-    destination = models.CharField(max_length=255)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    plan = models.CharField(max_length=255)
-    created_by = models.ForeignKey(User, related_name="my_trip")
-    users = models.ManyToManyField(User, related_name="trips")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = Trip_validation()
