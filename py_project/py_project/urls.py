@@ -22,6 +22,5 @@ urlpatterns = [
     url(r'^car/', include('apps.car.urls')),
     url(r'^flash', include('apps.flash_cards.urls')),
     url(r'^image/', include('apps.images.urls')),
-    url(r'^login/', include('apps.login_registration.urls')),
+    url(r'^login/', include('apps.login_registration.urls')),\
 ]
-

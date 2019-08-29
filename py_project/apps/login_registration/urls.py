@@ -8,5 +8,4 @@ urlpatterns = [
     url(r'^logout$', views.logout),
     url(r'^success$', views.success),
     url(r'^register$', views.register),
-    url(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='index')
 ]
