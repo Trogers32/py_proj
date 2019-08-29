@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <title>Flashy</title> 
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+        <!-- Bootstrap core CSS -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'index/css/bootstrap.css' %}">    
+        <script src="{% static 'index/js/bootstrap.js' %}"></script>
+
+        <!-- Custom styles for this template -->
+        <link href="form-validation.css" rel="stylesheet">
+        <style>
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                height: 100px;
+                width: 100px;
+                outline: black;
+                background-size: 100%, 100%;
+                background-image: none;
+            }
+            .carousel-control-next-icon:after
+            {
+                content: '>';
+                font-size: 55px;
+                color: black;
+            }
+            .carousel-control-prev-icon:after {
+                content: '<';
+                font-size: 55px;
+                color: black;
+            }
+            img{
+                width: 75%;
+                margin: auto;
+            }
+            .zoom {
+                padding: 50px;
+                transition: transform .2s; /* Animation */
+                width: 200px;
+                height: 300px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .zoom:hover {
+                transform: scale(1.65); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column" style="background-image: radial-gradient(rgb(99, 202, 206), rgb(32, 130, 148)); height:100vh;">
+        
+    <header>
+    </header>
+    <!-- -- -- -- -- LOGIN MODAL -- -- -- -- -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <form action="/login/user" method="POST">
+                {% csrf_token %}
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <input type="email" id="defaultForm-email" class="form-control validate" name="email" placeholder="Email" required="required">
+                            </div>
+                            <div class="md-form mb-4">
+                                <i class="fas fa-lock prefix grey-text"></i>
+                                <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="Password" required="required">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- -- -- -- -- END LOGIN MODAL -- -- -- -- -->
+        <!-- -- -- -- -- Registration MODAL -- -- -- -- -->
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <form action="/login/register" method="POST">
+                {% csrf_token %}
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-4">
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <input type="text" id="orangeForm-name" class="form-control validate" name="first_name" placeholder="First Name" required="required">
+                            </div>
+                            <div class="md-form mb-4">
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <input type="text" id="orangeForm-name" class="form-control validate" name="last_name" placeholder="Last Name" required="required">
+                            </div>
+                            <div class="md-form mb-4">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <input type="email" id="orangeForm-email" class="form-control validate" name="email" placeholder="Email" required="required">
+                            </div>
+                            <div class="md-form mb-4">
+                                <i class="fas fa-lock prefix grey-text"></i>
+                                <input type="password" id="orangeForm-pass" class="form-control validate" name="password" placeholder="Password" required="required">
+                            </div>
+                            <div class="md-form mb-4">
+                                <i class="fas fa-lock prefix grey-text"></i>
+                                <input type="password" id="orangeForm-pass" class="form-control validate" name="confirm_password" placeholder="Confirm Password" required="required">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-deep-orange" type="submit">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        <!-- -- -- -- -- End Registration MODAL -- -- -- -- -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <div class="col">
+                <a class="navbar-brand" href="#">Flashy</a>
+            </div>
+            <div class="col text-center">
+                <form action="/flash/change" method="POST">
+                    {% csrf_token %}
+                    <span class="navbar-brand">Choose a subject: </span>
+                    <select class="navbar-brand pl-4 bg-primary" name="subject" onchange="this.form.submit()">
+                        {% if subject == "Math" %}
+                        <option value="Math">Math</option>
+                        <option value="Life">Life</option>
+                        <option value="Science">Science</option>
+                        {% elif subject == "Science" %}
+                        <option value="Science">Science</option>
+                        <option value="Math">Math</option>
+                        <option value="Life">Life</option>
+                        {% else %}
+                        <option value="Life">Life</option>
+                        <option value="Science">Science</option>
+                        <option value="Math">Math</option>
+                        {% endif %}
+                    </select>
+                </form>
+            </div>
+            <div class="col text-right">
+                {% if request.session.user_id %}
+                    <a class="navbar-brand" href="#">Welcome, {{user.first_name}}</a><a class="text-white" href="/login/logout"><u>Log out</u></a> 
+                {% else %}
+                    <button class="btn btn-outline-success my-2 my-sm-0 btn btn-default btn-rounded bg-light"  data-toggle="modal" data-target="#modalRegisterForm">Register</button>
+                    <button href="modalLoginForm" class="btn btn-outline-success my-2 my-sm-0 bg-light" data-toggle="modal" data-target="#modalLoginForm" type="submit">Login</button>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="w-50 mx-auto my-auto">
+            <div class="d-inline-block col-7 h-100" data-ride="carousel" data-interval="false">
+                <div class="pb-1 h-100 text-center" style="background-image: radial-gradient(rgb(224, 224, 224), rgb(204, 207, 207));">
+                    {% if request.session.left == 0 %}
+                    <h1 style="padding-top:20%;">All out of questions!<br> Press reset or choose another subject!</h1>
+                    {% else %}
+                    <h1 style="padding-top:25%;">{{questions.first.question}}</h1>
+                    <form action="/flash/answer" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="ans" placeholder="Enter Answer" class="text-center">
+                        <button class="btn btn-primary d-block mx-auto mt-2" type="submit">Submit</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="pl-5 d-inline-block col-4 align-top pt-3">
+                    <div class="text-center mb-3" style="background-image: radial-gradient(rgb(178, 180, 180), rgb(139, 199, 209));height:10vh;">
+                        <h4>Total left</h4>
+                        <h4>{{request.session.left}}</h4>
+                    </div>
+                    <div class="text-center mb-3" style="background-image: radial-gradient(rgb(178, 180, 180), rgb(39, 189, 19));height:10vh;">
+                        <h4>Correct</h4>
+                        <h4>{{request.session.correct}}</h4>
+                    </div>
+                    <div class="text-center mb-3" style="background-image: radial-gradient(rgb(178, 180, 180), rgb(209, 25, 25));height:10vh;">
+                        <h4>Wrong</h4>
+                        <h4>{{request.session.wrong}}</h4>
+                    </div>
+                </div>
+        </div>
+        
+    <footer class="footer mt-auto mb-n3">
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary w-100">
+                <div class="row mx-auto text-center">
+                    <a class="navbar-brand pl-4" href="/flash/reset">Reset</a>
+                </div>
+            </nav>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    </body>
+</html>

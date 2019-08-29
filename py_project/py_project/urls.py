@@ -17,7 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^login/', include('apps.login_registration.urls')),
     url(r'^', include('apps.main.urls')),
+    url(r'^paint', include('apps.paint.urls')),
+    url(r'^car/', include('apps.car.urls')),
+    url(r'^flash', include('apps.flash_cards.urls')),
+    url(r'^image/', include('apps.images.urls')),
+    url(r'^login/', include('apps.login_registration.urls')),
 ]
 

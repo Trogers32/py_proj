@@ -23,8 +23,12 @@ def success(request):
         return redirect("/")
     elif request.session['current'] == 2:
         return redirect("/reviews")
-    else:
+    elif request.session['current'] == 3:
         return redirect("/contact")
+    elif request.session['current'] == 4:
+        return redirect("/flash")
+    elif request.session['current'] == 5:
+        return redirect("/image")
 # except:
 #     return render(request, "main/FAIL.html")
 
@@ -74,9 +78,15 @@ def logout(request):
     elif request.session['current'] == 2:
         request.session.clear()
         return redirect("/reviews")
-    else:
+    elif request.session['current'] == 3:
         request.session.clear()
         return redirect("/contact")
+    elif request.session['current'] == 4:
+        request.session.clear()
+        return redirect("/flash")
+    elif request.session['current'] == 5:
+        request.session.clear()
+        return redirect("/image")
 
 ###########################################################
 ###########################################################
