@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import *
 from apps.login_registration.models import *
 from django.contrib import messages
@@ -26,7 +26,7 @@ def uploading_file(request):
   uploaded_file = request.FILES['document']
   user = User.objects.get(id=int(request.session['user_id']))
   Image.objects.create(image=uploaded_file,user=user) 
-  return redirect('/image')
+  return HttpResponseRedirect('/image')
 
 
 def clean_session(request):

@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="{% static 'index/css/bootstrap.css' %}">    
     <script src="{% static 'index/js/bootstrap.js' %}"></script>
 </head>
-<body class="d-flex flex-column" style="background-image: radial-gradient(rgb(59, 59, 59), rgb(167, 164, 164), rgb(59, 59, 59)); height:100vh;">
-    
+<body class="d-flex flex-column" style="background-image: url('{% static 'index/images/sky.jpeg' %}');  background-attachment: fixed; background-repeat:no-repeat; background-size:cover; height:100vh;">
     <!-- -- -- -- -- LOGIN MODAL -- -- -- -- -->
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <form action="/login/user" method="POST">
@@ -148,11 +147,10 @@
     </div>
 
     <footer class="footer mt-auto mb-n3">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark w-100">
-            <div class="row w-50 mx-auto text-center">
-                
+            <div class="text-light bg-dark footer-copyright text-center py-2">
+              <span class="col text-light">© 2018 Copyright: Business Pusher.com</span>
+              <a class="col text-light" href="/contact">Contact Us</a>
             </div>
-        </nav>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

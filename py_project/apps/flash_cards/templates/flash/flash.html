@@ -134,7 +134,7 @@
                 <a class="navbar-brand" href="#">Flashy</a>
             </div>
             <div class="col text-center">
-                <form action="/flash/change" method="POST">
+                <form action="/flash/change" method="POST" class="d-inline-block">
                     {% csrf_token %}
                     <span class="navbar-brand">Choose a subject: </span>
                     <select class="navbar-brand pl-4 bg-primary" name="subject" onchange="this.form.submit()">
@@ -153,6 +153,7 @@
                         {% endif %}
                     </select>
                 </form>
+                <a class="navbar-brand pl-4 text-left" href="/flash/reset">Reset</a>
             </div>
             <div class="col text-right">
                 {% if request.session.user_id %}
@@ -195,16 +196,17 @@
         </div>
         
     <footer class="footer mt-auto mb-n3">
-            <nav class="navbar navbar-expand-md navbar-dark bg-primary w-100">
-                <div class="row mx-auto text-center">
-                    <a class="navbar-brand pl-4" href="/flash/reset">Reset</a>
-                </div>
-            </nav>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary w-100">
+            <div class="row mx-auto text-center">
+                <span class="text-light">© 2018 Copyright: Business Pusher.com</span>
+                <a class="text-light ml-4" href="/contact">Contact Us</a>
+            </div>
+        </nav>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
     </body>
 </html>
