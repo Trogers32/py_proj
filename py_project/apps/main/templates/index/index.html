@@ -48,11 +48,11 @@
                 width: 100%;
             }
             .zoom:hover {
-                transform: scale(1.65); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+                transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
             }
         </style>
-    </head>
-    <body style="background-image: radial-gradient(rgb(59, 59, 59), rgb(167, 164, 164), rgb(59, 59, 59)); background-attachment: fixed;">
+    </head><!-- radial-gradient(rgb(59, 59, 59), rgb(167, 164, 164), rgb(59, 59, 59)); -->
+    <body style="background-image: url('{% static 'index/images/sky.jpeg' %}');  background-attachment: fixed; background-repeat:no-repeat; background-size:cover;">
         
     <header>
     </header>
@@ -151,6 +151,10 @@
                     {% endif %}
                 </div>
             </nav>
+            <div class="row container mx-auto">
+                <h1 class="mt-5 text-white mx-auto">Welcome to Business Pusher!</h1>
+                <h3 class="mt-2 text-white mx-auto text-center">Our mission is to build your company the best possible website you could have! <br>Check out our previous works below! </h3>
+            </div>
             <div id="carouselExampleIndicators" class="carousel slide w-50 mx-auto" data-ride="carousel" style="padding-top: 50px;">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -181,51 +185,51 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/flash"><img class="d-block cover zoom" src="{% static 'index/images/web2.png' %}" alt="First slide"></a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/image"><img class="card-img-top zoom" src="{% static 'index/images/web3.png' %}" alt="Card image cap"></a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/paint"><img class="card-img-top zoom" src="{% static 'index/images/web4.png' %}" alt="Card image cap"></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/paint"><img class="card-img-top zoom" src="{% static 'index/images/web4.png' %}" alt="Card image cap"></a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/flash"><img class="d-block cover zoom" src="{% static 'index/images/web2.png' %}" alt="First slide"></a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/image"><img class="card-img-top zoom" src="{% static 'index/images/web3.png' %}" alt="Card image cap"></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/image"><img class="card-img-top zoom" src="{% static 'index/images/web3.png' %}" alt="Card image cap"></a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/paint"><img class="card-img-top zoom" src="{% static 'index/images/web4.png' %}" alt="Card image cap"></a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="mb-4 box-shadow">
                             <a href="/flash"><img class="d-block cover zoom" src="{% static 'index/images/web2.png' %}" alt="First slide"></a>
                         </div>
                     </div>
